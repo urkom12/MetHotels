@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RoomService } from './room.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [RoomService]
 })
 export class AppComponent {
   sobaForm: FormGroup;
@@ -12,7 +14,10 @@ export class AppComponent {
   dodatneUsluge: string[] = [];
   racun: number = 0;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private roomService: RoomService
+  ) {
     this.sobaForm = this.fb.group({
       naziv: ['', [Validators.required, Validators.minLength(6)]],
       klima: false,
@@ -29,7 +34,6 @@ export class AppComponent {
 
   dodajSobu() {
     if (this.sobaForm.valid) {
-      // Logika za dodavanje sobe
       console.log('Soba dodata uspešno.');
     } else {
       console.log('Nepravilno popunjena forma.');
@@ -37,21 +41,7 @@ export class AppComponent {
   }
 
   izracunajDodatneTroskove() {
-    this.racun = 0;
-  
-    const klimaControl = this.sobaForm.get('klima');
-    const miniBarControl = this.sobaForm.get('miniBar');
-    const saunaControl = this.sobaForm.get('sauna');
-  
-    if (klimaControl && klimaControl.value) {
-      this.racun += 50;
-    }
-    if (miniBarControl && miniBarControl.value) {
-      this.racun += 30;
-    }
-    if (saunaControl && saunaControl.value) {
-      this.racun += 80;
-    }
+    const numberOfNights = 3;
+    this.racun = this.roomService.getPrice(numberOfNights); 
   }
-  
 }

@@ -27,6 +27,10 @@
 
   <button type="button" (click)="izracunajDodatneTroskove()">Izračunaj dodatne troškove</button>
 
+  <div *ngIf="racun > 0">
+    <p>Vaš račun za 3 noći je: {{ racun }} dinara.</p>
+  </div>
+  
   <div *ngIf="sobaForm.get('klima')?.value">
     <p>Vaš račun je uvećan za 50 dinara.</p>
   </div>
