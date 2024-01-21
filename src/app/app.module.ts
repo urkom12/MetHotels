@@ -8,6 +8,7 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { ONamaComponent } from './o-nama/o-nama.component';
 import { PreporukeComponent } from './preporuke/preporuke.component';
 import { PonudaComponent } from './ponuda/ponuda.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { PonudaComponent } from './ponuda/ponuda.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

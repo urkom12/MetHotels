@@ -20,3 +20,59 @@ nav {
       }
     }
   }
+
+form {
+  width: 300px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.input-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  input {
+    margin-bottom: 5px;
+  }
+}
+
+.additional-cost {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: #2980b9;
+  }
+}
+
+.result-message {
+  margin-top: 10px;
+  color: #27ae60;
+  font-weight: bold;
+}

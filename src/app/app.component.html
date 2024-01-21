@@ -8,4 +8,37 @@
   <a routerLink="/o-nama">O nama</a>
 </nav>
 
+<form [formGroup]="sobaForm" (ngSubmit)="dodajSobu()">
+  <label for="naziv">Naziv sobe:</label>
+  <input name="naziv" id="naziv" [(ngModel)]="naziv" (input)="watchVrednost(naziv)" class="form-control"
+    formControlName="naziv">
+  <div *ngIf="sobaForm.get('naziv')?.hasError('required') && sobaForm.get('naziv')?.touched">
+  <p class="error-message">Unesite ispravan naziv sobe.</p>
+</div>
+
+  <div *ngIf="sobaForm.get('naziv')?.hasError('minlength') && sobaForm.get('naziv')?.touched">
+    <p class="error-message">Dužina naziva sobe mora biti najmanje 6 karaktera.</p>
+  </div>
+
+  <label>Dodatne usluge:</label>
+  <input type="checkbox" formControlName="klima"> Klima
+  <input type="checkbox" formControlName="miniBar"> Mini Bar
+  <input type="checkbox" formControlName="sauna"> Sauna
+
+  <button type="button" (click)="izracunajDodatneTroskove()">Izračunaj dodatne troškove</button>
+
+  <div *ngIf="sobaForm.get('klima')?.value">
+    <p>Vaš račun je uvećan za 50 dinara.</p>
+  </div>
+  <div *ngIf="sobaForm.get('miniBar')?.value">
+    <p>Vaš račun je uvećan za 30 dinara.</p>
+  </div>
+  <div *ngIf="sobaForm.get('sauna')?.value">
+    <p>Vaš račun je uvećan za 80 dinara.</p>
+  </div>
+
+  <button type="submit" [disabled]="!sobaForm.valid">Dodaj Sobu</button>
+</form>
+
+
 <router-outlet></router-outlet>
