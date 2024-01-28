@@ -1,5 +1,3 @@
-// room-list.component.ts
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from '../room.service';
@@ -42,7 +40,6 @@ export class RoomListComponent {
       }
     );
   }
-
 
   updateRoomDetails(): void {
     const updatedRoom = this.updateForm.value;
