@@ -1,10 +1,10 @@
 {
   "rooms": [
     {
-      "id": "a885",
-      "naziv": "asdasdadasssssssssssssssssssss",
+      "id": "2d1b",
+      "naziv": "Soba122",
       "klima": false,
-      "miniBar": false,
+      "miniBar": true,
       "sauna": false
     }
   ]
