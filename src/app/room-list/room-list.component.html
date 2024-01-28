@@ -1,0 +1,62 @@
+<div *ngIf="sobe.length > 0">
+  <h2>Sobe</h2>
+  <ul>
+    <li *ngFor="let soba of sobe">
+      {{ soba.naziv }} - Klima: {{ soba.klima ? 'Da' : 'Ne' }}, Mini Bar: {{ soba.miniBar ? 'Da' : 'Ne' }}, Sauna: {{ soba.sauna ? 'Da' : 'Ne' }}
+      <button (click)="onEdit(soba)" class="btn btn-info">Izmeni</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="sobe.length === 0">
+  <p>Nema dostupnih soba.</p>
+</div>
+
+<tbody>
+  <tr *ngFor="let room of sobe">
+    <td>{{ room.id }}</td>
+    <td>{{ room.naziv }}</td>
+    <td>{{ room.klima ? 'Da' : 'Ne' }}</td>
+    <td>{{ room.miniBar ? 'Da' : 'Ne' }}</td>
+    <td>{{ room.sauna ? 'Da' : 'Ne' }}</td>
+    <td>
+      <button (click)="onEdit(room)" class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#editModal">Izmeni</button>
+      <button (click)="deleteRoom(room)" class="btn btn-danger mx-3">Obriši</button>
+    </td>
+  </tr>
+</tbody>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Izmeni sobu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="updateForm">
+                  <div class="mb-3">
+                      <label for="editNaziv" class="form-label">Naziv</label>
+                      <input type="text" formControlName="naziv" class="form-control" id="editNaziv">
+                  </div>
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" formControlName="klima" class="form-check-input" id="editKlima">
+                      <label class="form-check-label" for="editKlima">Klima</label>
+                  </div>
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" formControlName="miniBar" class="form-check-input" id="editMiniBar">
+                      <label class="form-check-label" for="editMiniBar">Mini Bar</label>
+                  </div>
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" formControlName="sauna" class="form-check-input" id="editSauna">
+                      <label class="form-check-label" for="editSauna">Sauna</label>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+
+  
+</div>
+
+
+<!-- room-list.component.html -->

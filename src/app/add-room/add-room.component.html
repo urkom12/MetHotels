@@ -1,1 +1,24 @@
-<p>add-room works!</p>
+<!-- add-room.component.html -->
+<div class="container mt-3">
+    <h2>Dodaj sobu</h2>
+    <form [formGroup]="formValue" (ngSubmit)="postRoomDetails()">
+      <div class="mb-3">
+        <label for="naziv">Naziv:</label>
+        <input type="text" id="naziv" formControlName="naziv" required>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox"id="klima" formControlName="klima">
+        <label for="klima">Klima</label>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox"id="miniBar" formControlName="miniBar">
+        <label for="miniBar">Mini Bar</label>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox"id="sauna" formControlName="sauna">
+        <label for="sauna">Sauna</label>
+      </div>
+      <button type="submit">Dodaj sobu</button>
+    </form>
+  </div>
+  
